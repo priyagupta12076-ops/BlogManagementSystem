@@ -15,7 +15,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/comments", commentRoutes);
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const MONGO_URL =
     process.env.MONGO_URL || "mongodb://127.0.0.1:27017/blogmanagement";
 
@@ -34,6 +34,6 @@ mongoose
         console.log("MongoDB connection error:", error.message);
     });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
 });
