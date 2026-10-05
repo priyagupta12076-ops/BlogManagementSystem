@@ -66,7 +66,7 @@ router.delete("/:id", authMiddleware, async (req, res) => {
       });
     }
 
-    if (comment.author.toString() !== req.user.id) {
+    if (comment.author.toString() !== req.user.id && req.user.role !== "admin") {
       return res.status(403).json({
         message: "You are not allowed to delete this comment"
       });
